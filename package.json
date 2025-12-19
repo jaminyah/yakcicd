@@ -1,0 +1,26 @@
+{
+  "name": "yakcicd",
+  "version": "1.0.0",
+  "description": "Repo to  create first ci/cd pipeline.",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaminyah/yakcicd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaminyah/yakcicd/issues"
+  },
+  "homepage": "https://github.com/jaminyah/yakcicd#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
