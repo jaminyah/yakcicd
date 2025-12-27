@@ -5,14 +5,16 @@ FROM node:18
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package.json ./
+COPY package*.json ./
 RUN npm install
 
 #Copy application code
 COPY . .
 
 # Expose application post
-EXPOSE 3000
+ENV PORT=8080
+
+EXPOSE 8080
 
 # Start the application
 CMD ["node", "app.js"]

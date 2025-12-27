@@ -20,7 +20,10 @@
     "url": "https://github.com/jaminyah/yakcicd/issues"
   },
   "homepage": "https://github.com/jaminyah/yakcicd#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^30.2.0"
   }
 }
