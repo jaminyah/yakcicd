@@ -37,6 +37,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY_PUB }}
+          key: ${{ secrets.SSH_KEY_PRI }}
           port: ${{ secrets.PORT }}
           script: bash update.sh
