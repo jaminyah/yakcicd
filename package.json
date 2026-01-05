@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/jaminyah/yakcicd#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "https": "^1.0.0"
   },
   "devDependencies": {
     "jest": "^30.2.0"
