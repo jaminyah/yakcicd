@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT || 3000;
  
 // Serve static files from the 'public' directory
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 // error handling
 app.use((err, req, res, next) => {
