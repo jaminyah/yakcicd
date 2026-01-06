@@ -10,40 +10,41 @@
  * openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt
  */
 
-const express = require('express');
-const https = require('https');
+// Source - https://stackoverflow.com/a
+// Posted by DragonFire, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-01-06, License - CC BY-SA 4.0
+
+// Dependencies
 const fs = require('fs');
+const http = require('http');
+const https = require('https');
+const express = require('express');
+
 const app = express();
 
-// map localhost to docker container port
-const port = process.env.PORT || 3000;
+// Certificate
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.jamrx.me/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/www.jamrx.me/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/www.jamrx.me/chain.pem', 'utf8');
 
-var key = fs.readFileSync(__dirname + '/certs/selfsigned.key');
-var cert = fs.readFileSync(__dirname + '/certs/selfsigned.crt');
-var options = {
-  key: key,
-  cert: cert
+const credentials = {
+    key: privateKey,
+    cert: certificate,
+    ca: ca
 };
- 
-// Serve static files from the 'public' directory
-app.use(express.static(__dirname + '/public'));
 
-// error handling
-app.use((err, req, res, next) => {
-    if (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-    }
-    next();
+app.use((req, res) => {
+    res.send('Hello there !');
 });
 
-// Serve the index.html file
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html');
+// Starting both http & https servers
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(80, () => {
+    console.log('HTTP Server running on port 80');
 });
 
-var server = https.createServer(options, app);
-
-server.listen(port, () => {
-  console.log("server starting on port : " + port)
+httpsServer.listen(443, () => {
+    console.log('HTTPS Server running on port 443');
 });
