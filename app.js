@@ -23,9 +23,9 @@ const express = require('express');
 const app = express();
 
 // Certificate
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.jamrx.me/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/www.jamrx.me/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/www.jamrx.me/chain.pem', 'utf8');
+const privateKey = fs.readFileSync('letsencrypt/www.jamrx.me/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('letsencrypt/www.jamrx.me/cert.pem', 'utf8');
+const ca = fs.readFileSync('letsencrypt/www.jamrx.me/chain.pem', 'utf8');
 
 const credentials = {
     key: privateKey,
