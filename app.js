@@ -28,9 +28,9 @@ var options = {
 */
 
 // Certificate
-const privateKey = fs.readFileSync(__dirname + '/letsencrypt/www.jamrx.me/privkey.pem', 'utf8');
-const certificate = fs.readFileSync(__dirname + '/letsencrypt/www.jamrx.me/cert.pem', 'utf8');
-const ca = fs.readFileSync(__dirname + '/letsencrypt/www.jamrx.me/chain.pem', 'utf8');
+const privateKey = fs.readFileSync(__dirname + '/etc/letsencrypt/live/yourdomain.com/privkey.pem', 'utf8');
+const certificate = fs.readFileSync(__dirname + '/etc/letsencrypt/live/yourdomain.com/cert.pem', 'utf8');
+const ca = fs.readFileSync(__dirname + '/etc/letsencrypt/live/yourdomain.com/chain.pem', 'utf8');
 
 const credentials = {
     key: privateKey,
