@@ -12,9 +12,11 @@ RUN npm install
 COPY . .
 
 # Expose application post
-ENV PORT=8080
+#ENV PORT=8080
+ENV PORT=443
 
-EXPOSE 8080
+#EXPOSE 8080
+EXPOSE 443
 
 # Start the application
 CMD ["node", "app.js"]
